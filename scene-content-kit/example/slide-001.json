@@ -1,0 +1,131 @@
+{
+  "version": "scenekit.slide/v1",
+  "page": {
+    "id": "slide-001",
+    "title": "Page 1",
+    "width": 1280,
+    "height": 720,
+    "background": {
+      "type": "solid",
+      "color": "#FFFFFF"
+    },
+    "theme": {
+      "fontName": "Arial",
+      "fontColor": "#111827",
+      "backgroundColor": "#FFFFFF",
+      "themeColors": [
+        "#2563eb",
+        "#0f766e",
+        "#f59e0b"
+      ]
+    },
+    "elements": [
+      {
+        "id": "text-3",
+        "type": "text",
+        "name": "Text 3",
+        "left": 56,
+        "top": 16,
+        "width": 919,
+        "height": 61,
+        "rotate": 0,
+        "content": "<p>从一只“龙虾”说起</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "text-5",
+        "type": "text",
+        "name": "Text 5",
+        "left": 56,
+        "top": 115,
+        "width": 711,
+        "height": 42,
+        "rotate": 0,
+        "content": "<p>“OpenClaw是我们这个时代最重要的软件发布”</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "text-6",
+        "type": "text",
+        "name": "Text 6",
+        "left": 12,
+        "top": 649,
+        "width": 634,
+        "height": 58,
+        "rotate": 0,
+        "content": "<p>OpenClaw于3月1日在 GitHub 上的星标（Star）数量超过Linux；</p><p>于3月3日正式超越 React，成为 GitHub 上星标数最多的软件项目，总星标数突破 29万</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "text-7",
+        "type": "text",
+        "name": "Text 7",
+        "left": 631,
+        "top": 623,
+        "width": 533,
+        "height": 58,
+        "rotate": 0,
+        "content": "<p>3月6日，腾讯门口现场免费安装OpenClaw。现场装机队伍年龄跨度大，从2岁-60岁不等。比如，女儿上班没时间，帮女儿来养虾的父母</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "text-8",
+        "type": "text",
+        "name": "Text 8",
+        "left": 81,
+        "top": 162,
+        "width": 1056,
+        "height": 35,
+        "rotate": 0,
+        "content": "<p>黄仁勋（英伟达 CEO）在2026 年3月5日于Morgan Stanley TMT Conference 上发表的公开言论。</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "image-9",
+        "type": "image",
+        "name": "Image 9",
+        "left": 117,
+        "top": 229,
+        "width": 395,
+        "height": 411,
+        "rotate": 0,
+        "src": "/ppt-assets/deck-001/image-rId3.png",
+        "fixedRatio": true,
+        "radius": 0
+      },
+      {
+        "id": "image-10",
+        "type": "image",
+        "name": "Image 10",
+        "left": 637,
+        "top": 242,
+        "width": 527,
+        "height": 375,
+        "rotate": 0,
+        "src": "/ppt-assets/deck-001/image-rId4.png",
+        "fixedRatio": true,
+        "radius": 0
+      }
+    ]
+  }
+}

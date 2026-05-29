@@ -1,0 +1,11 @@
+{
+  "name": "scene-content-kit",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "style": "./styles.css",
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  }
+}

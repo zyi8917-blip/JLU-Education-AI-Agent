@@ -1,0 +1,35 @@
+# Flask核心
+Flask==3.0.0
+Flask-CORS==4.0.0
+Flask-RESTful==0.3.10
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.5
+
+# 数据验证
+pydantic==2.5.0
+marshmallow==3.20.1
+
+# Agent 编排与向量检索
+langgraph==0.2.16
+chromadb==0.5.23
+langchain==0.2.16
+langchain-openai==0.1.23
+langchain-community==0.2.16
+
+# 数据处理
+pandas==2.1.4
+plotly==5.17.0
+
+# 数据库
+sqlalchemy==2.0.23
+
+# 工具
+python-dotenv==1.0.0
+python-multipart==0.0.6
+
+# 日志
+colorlog==6.8.0
+
+# 语音合成
+edge-tts==7.2.3
+

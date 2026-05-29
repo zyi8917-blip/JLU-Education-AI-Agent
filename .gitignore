@@ -1,0 +1,42 @@
+# Secrets
+.env
+.env.local
+.env*.local
+**/.env
+!**/.env.example
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Agent local artifacts (rebuild with npm run rag:index)
+future_learning_demo/.chroma/
+future_learning_demo/.metrics/
+
+# DB / cache
+learning_power/backend/instance/
+learning_power/backend/cache/
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Resume extract temp
+resume_extract.txt

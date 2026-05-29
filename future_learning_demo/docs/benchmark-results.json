@@ -1,0 +1,417 @@
+{
+  "generatedAt": "2026-05-21T09:31:18.742Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "serverOnline": true,
+  "rounds20": {
+    "attempted": true,
+    "successRounds": 20,
+    "successRate": 100,
+    "avgFirstTokenMs": 907,
+    "p95FirstTokenMs": 1452
+  },
+  "abort": {
+    "attempted": true,
+    "aborted": true,
+    "abortSuccess": true
+  },
+  "ragKeyword": {
+    "attempted": true,
+    "hitCount": 1,
+    "source": "keyword"
+  },
+  "samples": [
+    {
+      "round": 1,
+      "ok": true,
+      "firstTokenMs": 4558,
+      "totalMs": 8304,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 60652
+    },
+    {
+      "round": 2,
+      "ok": true,
+      "firstTokenMs": 960,
+      "totalMs": 5592,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 74322
+    },
+    {
+      "round": 3,
+      "ok": true,
+      "firstTokenMs": 975,
+      "totalMs": 4550,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 53114
+    },
+    {
+      "round": 4,
+      "ok": true,
+      "firstTokenMs": 870,
+      "totalMs": 5925,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 78347
+    },
+    {
+      "round": 5,
+      "ok": true,
+      "firstTokenMs": 1214,
+      "totalMs": 5184,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 66179
+    },
+    {
+      "round": 6,
+      "ok": true,
+      "firstTokenMs": 1129,
+      "totalMs": 4093,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 57188
+    },
+    {
+      "round": 7,
+      "ok": true,
+      "firstTokenMs": 988,
+      "totalMs": 10728,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 157592
+    },
+    {
+      "round": 8,
+      "ok": true,
+      "firstTokenMs": 886,
+      "totalMs": 4403,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 61330
+    },
+    {
+      "round": 9,
+      "ok": true,
+      "firstTokenMs": 872,
+      "totalMs": 7552,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 110438
+    },
+    {
+      "round": 10,
+      "ok": true,
+      "firstTokenMs": 1141,
+      "totalMs": 5824,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 70534
+    },
+    {
+      "round": 11,
+      "ok": true,
+      "firstTokenMs": 1452,
+      "totalMs": 10759,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 153718
+    },
+    {
+      "round": 12,
+      "ok": true,
+      "firstTokenMs": 323,
+      "totalMs": 7105,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 103418
+    },
+    {
+      "round": 13,
+      "ok": true,
+      "firstTokenMs": 301,
+      "totalMs": 7721,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 125299
+    },
+    {
+      "round": 14,
+      "ok": true,
+      "firstTokenMs": 317,
+      "totalMs": 5483,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 85081
+    },
+    {
+      "round": 15,
+      "ok": true,
+      "firstTokenMs": 378,
+      "totalMs": 8097,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 125595
+    },
+    {
+      "round": 16,
+      "ok": true,
+      "firstTokenMs": 315,
+      "totalMs": 5287,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 85060
+    },
+    {
+      "round": 17,
+      "ok": true,
+      "firstTokenMs": 431,
+      "totalMs": 10496,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 159557
+    },
+    {
+      "round": 18,
+      "ok": true,
+      "firstTokenMs": 294,
+      "totalMs": 6631,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 96448
+    },
+    {
+      "round": 19,
+      "ok": true,
+      "firstTokenMs": 354,
+      "totalMs": 7097,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 114207
+    },
+    {
+      "round": 20,
+      "ok": true,
+      "firstTokenMs": 373,
+      "totalMs": 9181,
+      "aborted": false,
+      "ragSource": "chroma",
+      "bytes": 153494
+    }
+  ],
+  "metricsSummary": {
+    "summary": {
+      "totalRequests": 21,
+      "successRequests": 21,
+      "avgFirstTokenMs": 6,
+      "p95FirstTokenMs": 16,
+      "abortRate": 4.8,
+      "ragChromaRate": 100
+    },
+    "recent": [
+      {
+        "ts": "2026-05-21T09:31:35.453Z",
+        "mode": "course",
+        "messageCount": 6,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 13,
+        "totalMs": 4646,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:31:40.003Z",
+        "mode": "course",
+        "messageCount": 8,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 2,
+        "totalMs": 3577,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:31:45.928Z",
+        "mode": "course",
+        "messageCount": 10,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 3,
+        "totalMs": 5057,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:31:51.110Z",
+        "mode": "course",
+        "messageCount": 12,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 6,
+        "totalMs": 3973,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:31:55.206Z",
+        "mode": "course",
+        "messageCount": 14,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 1,
+        "totalMs": 2965,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:05.930Z",
+        "mode": "course",
+        "messageCount": 16,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 1,
+        "totalMs": 9736,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:10.334Z",
+        "mode": "course",
+        "messageCount": 18,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 2,
+        "totalMs": 3515,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:17.887Z",
+        "mode": "course",
+        "messageCount": 20,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 15,
+        "totalMs": 6693,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:23.713Z",
+        "mode": "course",
+        "messageCount": 22,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 2,
+        "totalMs": 4684,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:34.473Z",
+        "mode": "course",
+        "messageCount": 24,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 11,
+        "totalMs": 9317,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:41.576Z",
+        "mode": "course",
+        "messageCount": 26,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 2,
+        "totalMs": 6783,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:49.299Z",
+        "mode": "course",
+        "messageCount": 28,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 1,
+        "totalMs": 7421,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:32:54.783Z",
+        "mode": "course",
+        "messageCount": 30,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 16,
+        "totalMs": 5183,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:02.879Z",
+        "mode": "course",
+        "messageCount": 32,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 7,
+        "totalMs": 7726,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:08.167Z",
+        "mode": "course",
+        "messageCount": 34,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 19,
+        "totalMs": 4991,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:18.662Z",
+        "mode": "course",
+        "messageCount": 36,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 1,
+        "totalMs": 10065,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:25.293Z",
+        "mode": "course",
+        "messageCount": 38,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 2,
+        "totalMs": 6338,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:32.390Z",
+        "mode": "course",
+        "messageCount": 40,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 12,
+        "totalMs": 6755,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:41.571Z",
+        "mode": "course",
+        "messageCount": 42,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 0,
+        "totalMs": 8808,
+        "aborted": false
+      },
+      {
+        "ts": "2026-05-21T09:33:41.990Z",
+        "mode": "course",
+        "messageCount": 6,
+        "ragSource": "chroma",
+        "ragChunks": 4,
+        "firstTokenMs": 3,
+        "totalMs": 64,
+        "aborted": true,
+        "error": ""
+      }
+    ]
+  }
+}

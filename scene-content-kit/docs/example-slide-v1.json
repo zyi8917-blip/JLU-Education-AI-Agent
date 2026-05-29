@@ -1,0 +1,140 @@
+{
+  "version": "scenekit.slide/v1",
+  "page": {
+    "id": "slide-001",
+    "title": "Imported PPT Page 1",
+    "width": 960,
+    "height": 540,
+    "background": {
+      "type": "solid",
+      "color": "#FFFFFF"
+    },
+    "theme": {
+      "fontName": "Arial",
+      "fontColor": "#111827",
+      "backgroundColor": "#FFFFFF",
+      "themeColors": ["#2563eb", "#0f766e", "#f59e0b"]
+    },
+    "elements": [
+      {
+        "id": "title-1",
+        "type": "text",
+        "name": "Title",
+        "left": 48,
+        "top": 40,
+        "width": 500,
+        "height": 72,
+        "rotate": 0,
+        "content": "<p>Imported PPT Slide</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#111827",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "subtitle-1",
+        "type": "text",
+        "name": "Subtitle",
+        "left": 48,
+        "top": 122,
+        "width": 420,
+        "height": 56,
+        "rotate": 0,
+        "content": "<p>A minimal intermediate format for PPT page rendering.</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#475569",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "image-1",
+        "type": "image",
+        "name": "Example Image",
+        "left": 650,
+        "top": 76,
+        "width": 220,
+        "height": 150,
+        "rotate": 0,
+        "src": "/ppt-assets/deck-001/cover-image.png",
+        "fixedRatio": true,
+        "radius": 12
+      },
+      {
+        "id": "shape-1",
+        "type": "shape",
+        "name": "Highlight Box",
+        "left": 48,
+        "top": 214,
+        "width": 392,
+        "height": 98,
+        "rotate": 0,
+        "fill": "#DBEAFE",
+        "opacity": 1,
+        "outline": {
+          "width": 1,
+          "color": "#93C5FD"
+        }
+      },
+      {
+        "id": "shape-copy-1",
+        "type": "text",
+        "name": "Highlight Text",
+        "left": 72,
+        "top": 238,
+        "width": 338,
+        "height": 52,
+        "rotate": 0,
+        "content": "<p>Converters should downgrade unsupported PPT effects into stable renderable blocks.</p>",
+        "defaultFontName": "Arial",
+        "defaultColor": "#1E3A8A",
+        "fill": "transparent",
+        "opacity": 1,
+        "lineHeight": 1.4
+      },
+      {
+        "id": "line-1",
+        "type": "line",
+        "name": "Divider",
+        "left": 48,
+        "top": 340,
+        "width": 824,
+        "height": 2,
+        "rotate": 0,
+        "start": [0, 0],
+        "end": [824, 0],
+        "color": "#CBD5E1",
+        "style": "solid"
+      },
+      {
+        "id": "table-1",
+        "type": "table",
+        "name": "Summary Table",
+        "left": 48,
+        "top": 372,
+        "width": 560,
+        "height": 120,
+        "rotate": 0,
+        "outline": {
+          "width": 1,
+          "color": "#CBD5E1"
+        },
+        "data": [
+          [
+            { "id": "c1", "text": "Field", "style": { "bold": true, "align": "center", "backcolor": "#EFF6FF" } },
+            { "id": "c2", "text": "Purpose", "style": { "bold": true, "align": "center", "backcolor": "#EFF6FF" } }
+          ],
+          [
+            { "id": "c3", "text": "width / height" },
+            { "id": "c4", "text": "Defines viewport size and ratio" }
+          ],
+          [
+            { "id": "c5", "text": "elements" },
+            { "id": "c6", "text": "Ordered list of renderable page items" }
+          ]
+        ]
+      }
+    ]
+  }
+}

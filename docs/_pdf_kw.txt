@@ -1,0 +1,38 @@
+=== MyBatis ===
+  MyBatis 中 #{} 和 ${} 的区别是什么？
+  什么是 MyBatis-Plus？它有什么作用？它和 MyBatis 有哪些区别？
+  MyBatis 与 Hibernate 有哪些不同？
+  说说 MyBatis 的缓存机制？
+  简述 MyBatis 的插件运行原理，以及如何编写一个插件？
+
+=== AOP ===
+  什么是 AOP？
+  Spring AOP默认用的是什么动态代理，两者的区别？
+
+=== Spring Boot ===
+  什么是 Spring Boot？
+  Spring Boot 的核心特性有哪些？
+  Spring Boot 是如何通过 main 方法启动 web 项目的？
+  如何理解 Spring Boot 中的 starter？
+
+=== Spring MVC ===
+  Spring MVC 具体的工作原理？
+
+=== PageHelper ===
+
+=== 动态 ===
+  Spring AOP默认用的是什么动态代理，两者的区别？
+
+=== 代理 ===
+  Spring AOP默认用的是什么动态代理，两者的区别？
+  什么是代理模式？一般用在什么场景？
+
+=== 切面 ===
+
+=== 拦截器 ===
+
+=== JWT ===
+
+=== 自动配置 ===
+  SpringBoot 是如何实现自动配置的？
+

@@ -1,0 +1,80 @@
+{
+  "report_title": "用户自主学习力深度评估画像",
+  "basic_info": {
+    "user_name": "小明",
+    "assessment_date": "2026年4月26日",
+    "overall_grade": "非常好",
+    "overall_level": 4.6,
+    "max_level": 5.0,
+    "core_description": "您具备卓越的自主学习能力。您的元认知能力非常强，且擅长运用高级的元认知策略。当前的小短板在于“社会情感能力”的日常使用上。"
+  },
+  "core_motivation_system": {
+    "title": "核心动力系统 (Core Motivation System)",
+    "learning_motivation": {
+      "score": 4.5,
+      "label": "非常好",
+      "dimensions": [
+        { "name": "自主性", "score": 4.5, "label": "非常好" },
+        { "name": "胜任感", "score": 4.5, "label": "非常好" },
+        { "name": "关系需求", "score": 4.4, "label": "较好" }
+      ]
+    }
+  },
+  "strategy_core": {
+    "title": "学习策略中枢 (Strategy Core)",
+    "metacognition_and_critical_thinking": {
+      "score": 4.6,
+      "metrics": [
+        { "name": "他人去中心化", "score": 4.8 },
+        { "name": "自我整合", "score": 5.0 },
+        { "name": "分析性与逻辑性", "score": 4.5 },
+        { "name": "求知欲与探索欲", "score": 4.3 },
+        { "name": "系统性与规范性", "score": 4.5 },
+        { "name": "他人分化", "score": 4.6 },
+        { "name": "自我监测", "score": 4.8 },
+        { "name": "认知成熟度", "score": 4.8 },
+        { "name": "思维的开放性", "score": 4.5 }
+      ]
+    },
+    "basic_cognition_and_resource_management": {
+      "score": 4.8,
+      "metrics": [
+        { "name": "精加工策略", "score": 5.0 },
+        { "name": "复述策略", "score": 4.3 },
+        { "name": "组织策略", "score": 5.0 },
+        { "name": "资源管理策略", "score": 4.8 }
+      ]
+    }
+  },
+  "macro_ability_map": {
+    "title": "宏观能力地形图",
+    "radar_data": [
+      { "dimension": "学习动机", "value": 4.5 },
+      { "dimension": "学习体验", "value": 4.6 },
+      { "dimension": "学业延迟满足", "value": 4.4 },
+      { "dimension": "问题解决", "value": 4.7 },
+      { "dimension": "创造力", "value": 4.2 },
+      { "dimension": "学习策略(综合)", "value": 4.8 },
+      { "dimension": "学习风格", "value": 4.5 },
+      { "dimension": "自觉能动感", "value": 4.6 },
+      { "dimension": "成就目标", "value": 4.3 }
+    ]
+  },
+  "higher_order_outcome": {
+    "title": "高阶能力与表现 (Higher-Order Outcome)",
+    "items": [
+      { "name": "同伴关系", "score": 3.3, "label": "一般" },
+      { "name": "负责任的决策", "score": 5.0, "label": "非常好" },
+      { "name": "自我管理", "score": 4.6, "label": "非常好" },
+      { "name": "社会知觉", "score": 4.6, "label": "非常好" }
+    ]
+  },
+  "challenges_and_experience": {
+    "title": "挑战与体验 (Challenges & Experience)",
+    "items": [
+      { "name": "认知策略", "score": 4.8, "label": "非常好" },
+      { "name": "元认知能力", "score": 4.8, "label": "非常好" },
+      { "name": "社情能力", "score": 4.4, "label": "较好" }
+    ]
+  }
+}
