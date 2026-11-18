@@ -21,6 +21,10 @@ const result = spawnSync(py, [script], {
   cwd: join(root, "..", "learning_power", "backend"),
   stdio: "inherit",
   encoding: "utf8",
+  env: {
+    ...process.env,
+    HF_ENDPOINT: process.env.HF_ENDPOINT || "https://hf-mirror.com",
+  },
 });
 
 if (result.status !== 0) {

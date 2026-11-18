@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "rag:index": "node scripts/rag-index.mjs",
-    "benchmark:chat": "node scripts/benchmark-chat.mjs"
+    "benchmark:chat": "node scripts/benchmark-chat.mjs",
+    "benchmark:rag": "node scripts/rag-eval.mjs"
   },
   "dependencies": {
     "next": "15.3.1",

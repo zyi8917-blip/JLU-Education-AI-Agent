@@ -1,0 +1,44 @@
+{
+  "slides": [
+    {
+      "id": "course-slide-1",
+      "title": "从一只「龙虾」说起",
+      "body": "OpenClaw 现象说明软件形态从工具走向智能体。GitHub 星标超越 React，Agent 进入大众场景。模型层提供认知，Agent 层负责任务执行。"
+    },
+    {
+      "id": "course-slide-2",
+      "title": "拥抱人工智能时代",
+      "body": "从工业革命到认知革命。五种智能：大模型、智能体、具身智能、物理智能、生物智能协同。"
+    },
+    {
+      "id": "course-slide-3",
+      "title": "什么是大语言模型（LLM）",
+      "body": "Decoder-only Transformer。预训练、SFT、RLHF 对齐。自回归生成，KV Cache 加速推理。"
+    },
+    {
+      "id": "course-slide-4",
+      "title": "什么是 AI Agent",
+      "body": "感知、规划、记忆、行动。ReAct、Plan-and-Execute、Tool Calling。编排型 LangGraph 与知识增强型 RAG 对话。"
+    },
+    {
+      "id": "course-slide-5",
+      "title": "RAG：检索增强生成",
+      "body": "离线切片向量化，在线 Top-K 召回拼 Prompt。本项目 Flask 检索 + Next.js SSE 网关，Top-4 召回。"
+    },
+    {
+      "id": "course-slide-6",
+      "title": "Prompt / Context / Harness 工程",
+      "body": "Prompt 管怎么说，Context 管看到什么，Harness 管怎么跑。12 轮裁剪、benchmark 指标。"
+    },
+    {
+      "id": "course-slide-7",
+      "title": "学习力测评与画像 Agent",
+      "body": "LangGraph 三节点：evaluate_answers、generate_report、prepare_portrait。闭环：测评、报告、画像、伴学、PBL。"
+    },
+    {
+      "id": "course-slide-8",
+      "title": "PBL：设计课堂助教 Agent",
+      "body": "明确服务对象、三个核心功能、使用流程、风险提醒。三位 Agent：课程教练、方案设计、评估反馈。"
+    }
+  ]
+}

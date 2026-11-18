@@ -10,7 +10,8 @@ analysis_bp = Blueprint('analysis', __name__)
 system_bp = Blueprint('system', __name__)
 chat_bp = Blueprint('chat', __name__)
 rag_bp = Blueprint('rag', __name__)
+agent_bp = Blueprint('agent', __name__)
 
 # 导入路由（避免循环导入）
-from app.api import students, assessments, analysis, system, chat, rag
+from app.api import students, assessments, analysis, system, chat, rag, agent
 

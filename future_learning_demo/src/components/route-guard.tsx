@@ -20,7 +20,8 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
     if (
       !session.assessmentCompleted &&
       pathname !== "/assessment" &&
-      pathname !== "/assessment/result"
+      pathname !== "/assessment/result" &&
+      pathname !== "/portrait"
     ) {
       router.replace("/assessment");
       return;

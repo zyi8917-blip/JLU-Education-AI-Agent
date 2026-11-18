@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-10-01T06:58:08.102464+00:00",
+  "backend": "langchain",
+  "totalQuestions": 9,
+  "hitCount": 7,
+  "hitRatePercent": 77.8,
+  "topK": 4,
+  "details": [
+    {
+      "id": "openclaw-shape",
+      "question": "OpenClaw 为什么会引发这么大的关注？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "five-intelligences",
+      "question": "五种智能融合后会带来什么变化？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "ppt-mainline",
+      "question": "这两页 PPT 想传达的主线是什么？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "llm-basics",
+      "question": "什么是大语言模型？",
+      "hit": false,
+      "chunk_count": 4
+    },
+    {
+      "id": "agent-basics",
+      "question": "什么是 AI Agent？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "rag-impl",
+      "question": "RAG 在本项目里是怎么实现的？",
+      "hit": false,
+      "chunk_count": 4
+    },
+    {
+      "id": "langgraph-nodes",
+      "question": "LangGraph 测评工作流包含哪三个节点？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "engineering-layers",
+      "question": "Prompt、Context、Harness 工程分别解决什么问题？",
+      "hit": true,
+      "chunk_count": 4
+    },
+    {
+      "id": "course-value",
+      "question": "学习这部分内容，对初学者有什么价值？",
+      "hit": true,
+      "chunk_count": 4
+    }
+  ]
+}

@@ -7,7 +7,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const baseUrl = process.env.BENCHMARK_BASE_URL || "http://127.0.0.1:3000";
+const baseUrl = process.env.BENCHMARK_BASE_URL || "http://127.0.0.1:3001";
 const outDir = join(root, "docs");
 const outFile = join(outDir, "benchmark-results.json");
 
@@ -20,12 +20,17 @@ function percentile(values, p) {
 
 async function probeHealth() {
   try {
-    const res = await fetch(`${baseUrl}/api/metrics/summary`, { signal: AbortSignal.timeout(3000) });
+    const res = await fetch(`${baseUrl}/api/metrics/summary`, {
+      signal: AbortSignal.timeout(15000),
+    });
     return res.ok;
-  } catch {
+  } catch (err) {
+    console.error("[benchmark] health probe failed:", err?.message || err);
     return false;
   }
 }
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function streamOnce(messages, userQuery, signal) {
   const started = Date.now();
@@ -33,12 +38,23 @@ async function streamOnce(messages, userQuery, signal) {
   let bytes = 0;
   let aborted = false;
 
-  const res = await fetch(`${baseUrl}/api/chat`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ mode: "course", messages, userQuery }),
-    signal,
-  });
+  let res;
+  try {
+    res = await fetch(`${baseUrl}/api/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "course", messages, userQuery }),
+      signal,
+    });
+  } catch (err) {
+    return {
+      ok: false,
+      error: err?.message || String(err),
+      firstTokenMs,
+      totalMs: Date.now() - started,
+      aborted,
+    };
+  }
 
   if (!res.ok) {
     const err = await res.text();
@@ -126,7 +142,9 @@ async function main() {
       if (probe.firstTokenMs != null) ttfbList.push(probe.firstTokenMs);
     }
     if (probe.status === 503) break;
+    await sleep(400);
   }
+  const chromaRounds = result.samples.filter((s) => s.ragSource === "chroma").length;
   result.rounds20 = {
     attempted: true,
     successRounds: roundsOk,
@@ -135,6 +153,8 @@ async function main() {
       ? Math.round(ttfbList.reduce((a, b) => a + b, 0) / ttfbList.length)
       : null,
     p95FirstTokenMs: percentile(ttfbList, 0.95),
+    chromaRagRounds: chromaRounds,
+    chromaRagRate: Math.round((chromaRounds / 20) * 1000) / 10,
   };
 
   const ac = new AbortController();

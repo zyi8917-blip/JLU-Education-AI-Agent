@@ -12,7 +12,7 @@ export default function LoginPage() {
   useEffect(() => {
     const session = readSession();
     if (session.isLoggedIn) {
-      router.replace(session.assessmentCompleted ? "/home" : "/assessment");
+      router.replace("/assessment");
     }
   }, [router]);
 
@@ -32,7 +32,7 @@ export default function LoginPage() {
         <p className="eyebrow">未来学习平台</p>
         <h1>登录后开始你的 AI 学习闭环</h1>
         <p className="login-subtitle">
-          用一场简化学习力测评，进入《人工智能基础》的课程学习与项目实践。
+          登录后将先完成一场学习力面谈，再进入课程学习与项目实践。
         </p>
 
         <form className="login-form" onSubmit={handleSubmit}>
@@ -41,7 +41,7 @@ export default function LoginPage() {
             <input
               value={account}
               onChange={(event) => setAccount(event.target.value)}
-              placeholder="输入任意账号即可进入 Demo"
+              placeholder="请输入账号"
             />
           </label>
           <label>
@@ -50,7 +50,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              placeholder="输入任意密码"
+              placeholder="请输入密码"
             />
           </label>
           <button className="primary-button" type="submit">
@@ -58,10 +58,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div className="code-strip">
-          <span>Demo Mode</span>
-          <code>local-static-flow / no backend / deterministic agents</code>
-        </div>
+        <p className="login-footnote">演示环境：任意账号密码均可登录体验完整流程。</p>
       </section>
     </main>
   );

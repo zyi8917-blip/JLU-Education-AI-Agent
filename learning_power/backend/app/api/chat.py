@@ -5,6 +5,7 @@ from flask import request
 from datetime import datetime
 import json
 import logging
+import os
 
 from app.api import chat_bp
 from app.utils.response import success_response, error_response
@@ -74,21 +75,33 @@ def chat_with_portrait():
         # 添加当前用户消息
         messages.append({"role": "user", "content": message})
         
-        # 调用LLM
-        llm_client = LLMClient()
-        
-        if not llm_client.client:
-            return error_response('LLM服务暂时不可用', 503)
-        
-        response = llm_client.client.chat.completions.create(
-            model=llm_client.model,
-            messages=messages,
-            temperature=0.7,
-            max_tokens=800,
-            timeout=30
-        )
-        
-        reply = response.choices[0].message.content.strip()
+        reply = None
+        use_lc = os.getenv("USE_LC_EVAL", "true").lower() in ("1", "true", "yes")
+        if use_lc:
+            try:
+                from app.agents.lc_portrait_chat import portrait_reply_lc
+
+                reply = portrait_reply_lc(
+                    system_prompt=system_prompt,
+                    message=message,
+                    chat_history=chat_history,
+                )
+            except Exception as lc_exc:
+                logger.warning("LangChain portrait chat failed, fallback: %s", lc_exc)
+
+        if reply is None:
+            llm_client = LLMClient()
+            if not llm_client.client:
+                return error_response('LLM服务暂时不可用', 503)
+
+            response = llm_client.client.chat.completions.create(
+                model=llm_client.model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=800,
+                timeout=30,
+            )
+            reply = response.choices[0].message.content.strip()
         
         logger.info(f"Chat response generated successfully (length: {len(reply)})")
         

@@ -55,6 +55,16 @@ def load_chunks() -> list[tuple[str, str]]:
             if body:
                 chunks.append((f"slide-{file.name}", f"【课件 {file.name}】\n{body}"))
 
+    slides_kb = _DEMO_ASSETS / "course_slides_kb.json"
+    if slides_kb.exists():
+        data = json.loads(slides_kb.read_text(encoding="utf-8"))
+        for slide in data.get("slides", []):
+            title = slide.get("title", "")
+            body = slide.get("body", "")
+            sid = slide.get("id", f"slide-kb-{len(chunks)}")
+            if title or body:
+                chunks.append((sid, f"【课件 {title}】\n{body}"))
+
     return chunks
 
 

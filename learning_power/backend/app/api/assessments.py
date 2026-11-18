@@ -253,6 +253,64 @@ def get_score(session_id):
         return error_response(str(e), 500)
 
 
+@assessments_bp.route('/quick-complete', methods=['POST'])
+def quick_complete():
+    """Next.js 演示栈：直接提交 Q/A 对，走 LangGraph 三节点（无需先建 session）。"""
+    try:
+        data = request.get_json() or {}
+        pairs = data.get('question_answer_pairs') or []
+        if not pairs:
+            return error_response('question_answer_pairs is required', 400)
+
+        student_id = data.get('student_id', 'demo-001')
+        student_name = data.get('student_name', '学习者')
+        evaluation_type = data.get('evaluation_type', 'metacognition')
+        session_id = f"quick_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+        formatted_pairs = []
+        for idx, pair in enumerate(pairs):
+            formatted_pairs.append({
+                'question_id': pair.get('question_id') or f'Q{idx + 1:03d}',
+                'question_content': pair.get('question_content') or pair.get('prompt', ''),
+                'answer_content': pair.get('answer_content') or pair.get('answer', ''),
+            })
+
+        logger.info(
+            "Quick-complete: %s pairs, student=%s, type=%s",
+            len(formatted_pairs),
+            student_id,
+            evaluation_type,
+        )
+
+        workflow_state = run_assessment_workflow(
+            session_id=session_id,
+            student_id=student_id,
+            student_name=student_name,
+            evaluation_type=evaluation_type,
+            question_answer_pairs=formatted_pairs,
+        )
+
+        report_payload = workflow_state.get('report_payload') or {}
+        portrait_data = workflow_state.get('portrait_data') or {}
+
+        return success_response({
+            'session_id': session_id,
+            'status': 'completed',
+            'final_scores': report_payload.get('final_scores', {}),
+            'total_score': report_payload.get('total_score', 0),
+            'grade_level': report_payload.get('grade_level', 'C'),
+            'feedback': report_payload.get('feedback', {}),
+            'answer_details': report_payload.get('answer_details', []),
+            'portrait_data': portrait_data,
+            'workflow_ms': workflow_state.get('workflow_ms'),
+            'agent_pipeline': ['evaluate_answers', 'generate_report', 'prepare_portrait'],
+            'error': workflow_state.get('error'),
+        }, message='Quick assessment completed')
+    except Exception as e:
+        logger.error(f"Error in quick_complete: {str(e)}", exc_info=True)
+        return error_response(str(e), 500)
+
+
 @assessments_bp.route('/sessions/<session_id>/complete', methods=['POST'])
 def complete_session(session_id):
     """完成测评 - 使用AI批量评分"""

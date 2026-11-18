@@ -1,34 +1,65 @@
 {
   "suggestedQuestions": [
     "OpenClaw 为什么会引发这么大的关注？",
-    "五种智能融合后会带来什么变化？",
-    "这两页 PPT 想传达的主线是什么？"
+    "RAG 在本项目里是怎么实现的？",
+    "LangGraph 测评工作流包含哪三个节点？",
+    "Prompt、Context、Harness 工程分别解决什么问题？"
   ],
-  "fallbackAnswer": "这部分内容可以先从课程主线来理解：人工智能并不只是单点技术突破，而是在模型、智能体、具身和真实世界连接上逐步形成新的协作方式。你也可以点选推荐问题，我会结合课件继续展开。",
+  "fallbackAnswer": "这部分内容可以先从课程主线来理解：人工智能并不只是单点技术突破，而是在模型、智能体、RAG 和工作流编排上逐步形成可落地的 Agent 应用。你也可以点选推荐问题，我会结合当前课件继续展开。",
   "entries": [
     {
       "id": "openclaw-shape",
       "question": "OpenClaw 为什么会引发这么大的关注？",
       "keywords": ["openclaw", "龙虾", "关注", "github", "软件形态"],
-      "answer": "课件把 OpenClaw 当作一个信号事件来看。重点不只是它的星标数，而是它代表软件形态正在从“等人操作的工具”走向“能主动执行任务的智能体系统”。对课程来说，这个例子说明了 AI 应用正在从模型能力，进一步进入工作流与任务执行层。"
+      "answer": "课件把 OpenClaw 当作范式变化的信号：软件正从「等人操作的工具」走向「能主动执行任务的智能体系统」。星标数只是结果，更重要的是开发者对 Agent 工作流的期待。"
     },
     {
       "id": "five-intelligences",
       "question": "五种智能融合后会带来什么变化？",
       "keywords": ["五种智能", "融合", "大模型", "智能体", "具身", "物理", "生物"],
-      "answer": "这两页内容强调的不是单个技术点，而是协同关系。大模型负责理解与推理，智能体负责目标拆解和执行，具身与物理智能负责把能力带入现实环境，生物智能则让人与系统的接口更自然。课程要学生看到的，是 AI 正在从“回答问题”升级到“参与世界”。"
+      "answer": "大模型负责理解与推理，智能体负责目标拆解和执行，具身与物理智能把能力带入现实环境，生物智能让人机接口更自然。AI 正在从「回答问题」升级到「参与世界」。"
     },
     {
       "id": "ppt-mainline",
       "question": "这两页 PPT 想传达的主线是什么？",
-      "keywords": ["主线", "ppt", "两页", "课程", "传达"],
-      "answer": "主线可以概括为两句话：第一，人工智能正在改变软件和社会分工；第二，这场变化不是单一模型升级，而是多种智能能力共同推动的新阶段。所以《人工智能基础》课程不只是介绍概念，还要帮助学习者建立技术演进的整体视角。"
+      "keywords": ["主线", "ppt", "课程", "传达"],
+      "answer": "主线是：第一，AI 正在改变软件和社会分工；第二，这是多种智能能力共同推动的新阶段，而不是单一模型升级。"
+    },
+    {
+      "id": "llm-basics",
+      "question": "什么是大语言模型？",
+      "keywords": ["大语言模型", "llm", "transformer", "预训练", "sft"],
+      "answer": "LLM 基于 Transformer Decoder，通过预训练学语言规律，再经 SFT 和对齐让模型听指令、更安全。推理时自回归生成，KV Cache 加速输出。"
+    },
+    {
+      "id": "agent-basics",
+      "question": "什么是 AI Agent？",
+      "keywords": ["agent", "智能体", "react", "tool", "工具"],
+      "answer": "Agent 通常包含感知、规划、记忆、行动四模块。常见范式有 ReAct、Plan-and-Execute、Tool Calling。本平台测评侧用 LangGraph 编排，课堂侧用 RAG+流式网关。"
+    },
+    {
+      "id": "rag-impl",
+      "question": "RAG 在本项目里是怎么实现的？",
+      "keywords": ["rag", "检索", "chroma", "向量", "知识库"],
+      "answer": "课件 JSON、QA 和 Markdown 切片写入 Chroma，Flask 提供检索 API，Next.js /api/chat 按用户问题 Top-4 召回并注入 Prompt，再 SSE 流式生成。Chroma 不可用时有关键词降级。"
+    },
+    {
+      "id": "langgraph-nodes",
+      "question": "LangGraph 测评工作流包含哪三个节点？",
+      "keywords": ["langgraph", "测评", "节点", "画像", "报告"],
+      "answer": "三节点线性工作流：evaluate_answers（批量评分）→ generate_report（整理报告）→ prepare_portrait（生成画像上下文）。complete 接口一次 invoke 返回 portrait_data。"
+    },
+    {
+      "id": "engineering-layers",
+      "question": "Prompt、Context、Harness 工程分别解决什么问题？",
+      "keywords": ["prompt", "context", "harness", "工程"],
+      "answer": "Prompt 管模型怎么说；Context 管 RAG、历史、slide 摘要如何组装进 token 预算；Harness 管编排、流式、降级、metrics 等运行时框架。Agent 落地三层都要做。"
     },
     {
       "id": "course-value",
       "question": "学习这部分内容，对初学者有什么价值？",
       "keywords": ["价值", "初学者", "学习", "意义"],
-      "answer": "对初学者来说，这部分内容的价值是建立方向感。学生会先理解 AI 为什么重要、现在发展到了哪里、未来可能和哪些领域结合。这样后面学模型、智能体或实际项目时，就不会只停留在术语层面。"
+      "answer": "帮助建立 AI 演进的方向感：为什么重要、现在到哪一步、Agent/RAG/工作流如何协同。后面学项目和做答辩时不会只停留在术语层面。"
     }
   ]
 }

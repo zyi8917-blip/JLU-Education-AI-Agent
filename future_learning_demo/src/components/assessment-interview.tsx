@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { assessmentQuestions } from "@/data/assessment-questions";
-import { completeAssessment } from "@/lib/demo-session";
+import { saveAssessmentResult } from "@/lib/demo-session";
+import { submitAssessmentAnswers } from "@/lib/assessment/submit";
 
 type SpeechRecognitionLike = {
   continuous: boolean;
@@ -33,12 +34,14 @@ export function AssessmentInterview() {
   const router = useRouter();
   const [index, setIndex] = useState(0);
   const [draft, setDraft] = useState("");
-  const [answers, setAnswers] = useState<Array<{ prompt: string; answer: string }>>(
-    [],
-  );
+  const [answers, setAnswers] = useState<
+    Array<{ question_id: string; prompt: string; answer: string; dimension: string }>
+  >([]);
   const [isRecording, setIsRecording] = useState(false);
   const [interimText, setInterimText] = useState("");
   const [speechSupported, setSpeechSupported] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
 
   const currentQuestion = assessmentQuestions[index];
@@ -99,7 +102,7 @@ export function AssessmentInterview() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !currentQuestion?.prompt) {
+    if (typeof window === "undefined" || !currentQuestion?.prompt || submitting) {
       return;
     }
 
@@ -112,7 +115,7 @@ export function AssessmentInterview() {
     return () => {
       window.speechSynthesis.cancel();
     };
-  }, [currentQuestion?.id, currentQuestion?.prompt]);
+  }, [currentQuestion?.id, currentQuestion?.prompt, submitting]);
 
   const recentHighlights = useMemo(() => answers.slice(-3).reverse(), [answers]);
 
@@ -131,15 +134,47 @@ export function AssessmentInterview() {
     setIsRecording(true);
   }
 
+  async function finalizeAssessment(
+    allAnswers: Array<{
+      question_id: string;
+      prompt: string;
+      answer: string;
+      dimension: string;
+    }>,
+  ) {
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitAssessmentAnswers(allAnswers);
+      saveAssessmentResult({
+        report: result.report,
+        portrait_data: result.portrait_data,
+        source: result.source,
+      });
+      router.push("/assessment/result");
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error ? error.message : "提交失败，请检查网络后重试",
+      );
+      setSubmitting(false);
+    }
+  }
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!draft.trim() || !currentQuestion) {
+    if (!draft.trim() || !currentQuestion || submitting) {
       return;
     }
 
     const nextAnswers = [
       ...answers,
-      { prompt: currentQuestion.prompt, answer: draft.trim() },
+      {
+        question_id: currentQuestion.id,
+        prompt: currentQuestion.prompt,
+        answer: draft.trim(),
+        dimension: currentQuestion.dimension,
+      },
     ];
 
     setAnswers(nextAnswers);
@@ -147,8 +182,7 @@ export function AssessmentInterview() {
     setInterimText("");
 
     if (index === assessmentQuestions.length - 1) {
-      completeAssessment();
-      router.push("/assessment/result");
+      void finalizeAssessment(nextAnswers);
       return;
     }
 
@@ -157,11 +191,21 @@ export function AssessmentInterview() {
 
   return (
     <section className="assessment-interview-shell">
+      {submitting ? (
+        <div className="center-screen assessment-submit-overlay">
+          <div className="loading-card">
+            <p className="soft-label">正在分析</p>
+            <strong>正在生成你的学习力报告…</strong>
+            <p>请稍候，通常需要几秒到一分钟</p>
+          </div>
+        </div>
+      ) : null}
+
       <aside className="assessment-side-panel">
         <p className="soft-label">测评说明</p>
         <h2>一对一学习力面谈</h2>
         <p>
-          参考 `learning_power` 的语音面谈节奏，当前页面聚焦单题作答。你可以直接输入，也可以点击语音按钮进行识别。
+          共 10 道题，涵盖学习动机、学习体验、延迟满足、问题解决与学习策略。请尽量结合真实经历作答。
         </p>
 
         <div className="assessment-progress-card">
@@ -197,16 +241,18 @@ export function AssessmentInterview() {
           </div>
           <p className="agent-name">学习力测评官</p>
           <p className="agent-status">
-            {isRecording ? "正在倾听你的回答..." : "当前问题已朗读，可开始作答"}
+            {submitting
+              ? "正在汇总你的回答并生成画像..."
+              : isRecording
+                ? "正在倾听你的回答..."
+                : "当前问题已朗读，可开始作答"}
           </p>
         </div>
 
         <div className="assessment-question-card">
           <p className="soft-label">当前问题</p>
           <h3>{currentQuestion.prompt}</h3>
-          <p>
-            保持自然表达即可。本 Demo 不做真实计算，重点展示学习者与智能体的一对一测评体验。
-          </p>
+          <p>保持自然表达即可。最后一题提交后，系统将自动生成报告与画像。</p>
         </div>
 
         <form className="assessment-answer-card" onSubmit={handleSubmit}>
@@ -219,7 +265,7 @@ export function AssessmentInterview() {
             </div>
             <button
               className={isRecording ? "voice-trigger voice-trigger-active" : "voice-trigger"}
-              disabled={!speechSupported}
+              disabled={!speechSupported || submitting}
               onClick={toggleRecording}
               type="button"
             >
@@ -238,16 +284,19 @@ export function AssessmentInterview() {
             </div>
           ) : null}
 
+          {submitError ? <p className="error-hint">{submitError}</p> : null}
+
           <textarea
             rows={8}
             value={draft}
+            disabled={submitting}
             onChange={(event) => setDraft(event.target.value)}
             placeholder={currentQuestion.placeholder}
           />
 
           <div className="assessment-submit-row">
             <span className="input-tip">第 {index + 1} 题完成后将自动进入下一题</span>
-            <button className="primary-button" type="submit">
+            <button className="primary-button" disabled={submitting} type="submit">
               {index === assessmentQuestions.length - 1 ? "提交并生成结果" : "提交当前回答"}
             </button>
           </div>

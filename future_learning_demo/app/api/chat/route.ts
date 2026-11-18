@@ -34,7 +34,8 @@ export async function POST(req: NextRequest) {
 
   let ragSource: "chroma" | "keyword" | "none" = "none";
   let ragChunks = 0;
-  if (body.mode === "course" && body.userQuery?.trim()) {
+  const ragModes = new Set(["course", "project"]);
+  if (ragModes.has(body.mode) && body.userQuery?.trim()) {
     const rag = await retrieveCourseContext(body.userQuery.trim(), 4);
     ragSource = rag.chunks.length ? rag.source : "none";
     ragChunks = rag.chunks.length;

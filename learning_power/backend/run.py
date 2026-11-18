@@ -22,9 +22,11 @@ if __name__ == '__main__':
     print(f"[db] {app.config['SQLALCHEMY_DATABASE_URI']}")
     print("=" * 50)
     
+    debug = bool(app.config["DEBUG"])
     app.run(
-        host=app.config['HOST'],
-        port=app.config['PORT'],
-        debug=app.config['DEBUG']
+        host=app.config["HOST"],
+        port=app.config["PORT"],
+        debug=debug,
+        use_reloader=False,
     )
 

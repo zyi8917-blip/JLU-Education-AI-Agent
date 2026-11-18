@@ -51,8 +51,8 @@ export function CourseQaPanel({ slideContext }: CourseQaPanelProps) {
   const useLlm = envLlm || storageLlm;
 
   const introContent = useLlm
-    ? "推荐问题或自由提问。大模型模式已开启：服务端 /api/chat 流式输出，并结合 Chroma RAG 检索课件与 QA 知识库（需 npm run rag:index）。"
-    : "你可以点选推荐问题，也可以直接补充提问。当前为脚本演示模式；勾选下方「大模型模式」并配置 .env.local 后切换为真实模型。";
+    ? "你可以点选推荐问题，也可以自由提问。助手会结合当前课件内容为你解答。"
+    : "你可以点选推荐问题，也可以自由提问。开启下方「大模型模式」后可获得更灵活的流式回答。";
 
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([

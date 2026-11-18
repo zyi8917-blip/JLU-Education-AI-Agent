@@ -3,8 +3,8 @@ import "./globals.css";
 import "scene-content-kit/styles.css";
 
 export const metadata: Metadata = {
-  title: "未来学习平台 Demo",
-  description: "用于答辩演示的未来学习平台最小闭环 Demo",
+  title: "未来学习平台",
+  description: "吉大未来学习 · AI 智能教育 Agent 平台",
 };
 
 export default function RootLayout({

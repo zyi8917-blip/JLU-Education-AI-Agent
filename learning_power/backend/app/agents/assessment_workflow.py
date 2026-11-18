@@ -42,12 +42,21 @@ def _score_to_rating(score: float) -> str:
 
 
 def node_evaluate_answers(state: AssessmentWorkflowState) -> AssessmentWorkflowState:
-    """节点1：批量 LLM 评测答案。"""
-    llm = get_llm_client()
+    """节点1：批量 LLM 评测答案（默认 LangChain ChatPromptTemplate + ChatOpenAI）。"""
     pairs = state.get("question_answer_pairs") or []
     evaluation_type = state.get("evaluation_type") or "creativity"
+    llm = get_llm_client()
 
     try:
+        from app.agents.lc_batch_evaluate import batch_evaluate_lc, use_lc_eval
+
+        if use_lc_eval():
+            try:
+                result = batch_evaluate_lc(pairs, evaluation_type)
+                return {**state, "evaluation_result": result, "error": None}
+            except Exception as lc_exc:
+                logger.warning("LangChain batch evaluate failed, fallback: %s", lc_exc)
+
         result = llm.batch_evaluate_answers(
             question_answer_pairs=pairs,
             evaluation_type=evaluation_type,

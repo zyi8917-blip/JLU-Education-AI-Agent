@@ -20,9 +20,10 @@ venv/
 *.egg-info/
 .pytest_cache/
 
-# IDE
+# IDE / Cursor
 .idea/
 .vscode/
+.cursor/
 *.iml
 
 # Agent local artifacts (rebuild with npm run rag:index)
@@ -40,3 +41,13 @@ Thumbs.db
 
 # Resume extract temp
 resume_extract.txt
+
+# Build artifacts
+*.tsbuildinfo
+
+# Local one-off scripts (not part of the platform)
+generate_coze_report*.py
+polish_coze_report_docx.py
+fix_figure_numbers.py
+_pdf_to_bagu_md.py
+generate_report.py

@@ -3,16 +3,18 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import { assessmentQuestions } from "@/data/assessment-questions";
-import { completeAssessment } from "@/lib/demo-session";
+import { saveAssessmentResult } from "@/lib/demo-session";
+import { submitAssessmentAnswers } from "@/lib/assessment/submit";
 import { ChatPanel, type ChatMessage } from "@/components/chat-panel";
 
 export function AssessmentChat() {
   const router = useRouter();
   const [index, setIndex] = useState(0);
   const [draft, setDraft] = useState("");
-  const [answers, setAnswers] = useState<Array<{ prompt: string; answer: string }>>(
-    [],
-  );
+  const [answers, setAnswers] = useState<
+    Array<{ question_id: string; prompt: string; answer: string; dimension: string }>
+  >([]);
+  const [submitting, setSubmitting] = useState(false);
 
   const currentQuestion = assessmentQuestions[index];
 
@@ -23,7 +25,7 @@ export function AssessmentChat() {
         role: "agent",
         speaker: "测评智能体",
         content:
-          "接下来我们会用 10 个问题快速了解你的学习状态。整个过程不做真实评分，你只需要自然回答即可。",
+          "接下来我们会用 10 个问题了解你的学习状态。请像聊天一样自然回答即可。",
       },
     ];
 
@@ -54,22 +56,37 @@ export function AssessmentChat() {
     return base;
   }, [answers, currentQuestion]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!draft.trim() || !currentQuestion) {
+    if (!draft.trim() || !currentQuestion || submitting) {
       return;
     }
 
     const nextAnswers = [
       ...answers,
-      { prompt: currentQuestion.prompt, answer: draft.trim() },
+      {
+        question_id: currentQuestion.id,
+        prompt: currentQuestion.prompt,
+        answer: draft.trim(),
+        dimension: currentQuestion.dimension,
+      },
     ];
     setAnswers(nextAnswers);
     setDraft("");
 
     if (index === assessmentQuestions.length - 1) {
-      completeAssessment();
-      router.push("/assessment/result");
+      setSubmitting(true);
+      try {
+        const result = await submitAssessmentAnswers(nextAnswers);
+        saveAssessmentResult({
+          report: result.report,
+          portrait_data: result.portrait_data,
+          source: result.source,
+        });
+        router.push("/assessment/result");
+      } catch {
+        setSubmitting(false);
+      }
       return;
     }
 
@@ -93,8 +110,12 @@ export function AssessmentChat() {
             <span className="muted-text">
               当前维度：{currentQuestion?.dimension ?? "已完成"}
             </span>
-            <button className="primary-button" type="submit">
-              {index === assessmentQuestions.length - 1 ? "提交并查看结果" : "提交下一题"}
+            <button className="primary-button" disabled={submitting} type="submit">
+              {submitting
+                ? "生成报告中..."
+                : index === assessmentQuestions.length - 1
+                  ? "提交并查看结果"
+                  : "提交下一题"}
             </button>
           </div>
         </form>

@@ -5,9 +5,9 @@ import { projectScenario } from "@/data/demo-data";
 export default function ProjectPage() {
   return (
     <AppShell
-      eyebrow="Step 05 / Project Learning"
-      title="用一次课程内 PBL 训练，完成从理解到设计的闭环"
-      subtitle="项目页通过固定主题、固定智能体角色和对话式推进，让“做中学”在答辩中更容易被讲清楚。"
+      eyebrow="项目实践"
+      title="完成一次课程内的 PBL 项目训练"
+      subtitle="与教练、设计、评估三位智能体协作，按里程碑推进「课堂助教 Agent」方案并提交成果。"
     >
       <section className="split-layout project-layout">
         <section className="card sidebar-card">
